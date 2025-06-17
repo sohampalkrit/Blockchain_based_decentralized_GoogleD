@@ -13,9 +13,10 @@ contract Upload {
   mapping(address=>Access[]) accessList;
   mapping(address=>mapping(address=>bool)) previousData;
 
-  function add(address _user,string memory url) external {
-      value[_user].push(url);
-  }
+ function add(string memory url) external {
+    value[msg.sender].push(url);
+}
+
   function allow(address user) external {//def
       ownership[msg.sender][user]=true; 
       if(previousData[msg.sender][user]){
